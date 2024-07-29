@@ -7,7 +7,6 @@ export default function Load() {
   return (
     <Flex bgGradient='linear(to-r, blue.600, blue.700)' margin={'0 auto'} h={'100vh'} justify={"center"} flexDir={"column"} align={"center"}>
       <motion.div
-        className="box"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{

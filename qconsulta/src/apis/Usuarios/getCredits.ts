@@ -13,3 +13,19 @@ export const getCredits = async (username:string) => {
   }
  
 }
+
+export const adicionaCredito = async (username:string, api:string, credits:string) => {
+  
+  try {
+    const response = await axios.patch('http://192.168.4.185:3333/addCredits', {
+      username,
+      api,
+      credits
+    })
+    return response.data
+  } catch (err) {
+    console.log(err)
+    return 'Não foi possivel fazer a busca'
+  }
+ 
+}

@@ -17,7 +17,7 @@ const Information = () => {
   }, []);
   const location = useLocation();
   const { resultado } = location.state;
-  console.log(resultado )
+  
   
   const handleGeneratePdf = async () => {
     const doc = pdf(<PdfDocument dados={resultado} />);
@@ -56,7 +56,7 @@ const Information = () => {
       <Flex align={'center'} justify={'center'} mt={4}>
         <Button onClick={handleGeneratePdf} bg={'blue.500'} color={'gray.200'} _hover={{ bg: 'blue.600', color: 'gray.100' }}>Gerar PDF</Button>
         {pdfBlob && (
-          <Link href={URL.createObjectURL(pdfBlob)} download="document.pdf" ml={4}>
+          <Link href={URL.createObjectURL(pdfBlob)} download={resultado.listaDadosBancarios[0].numeroBeneficio} ml={4}>
             Baixar PDF
           </Link>
         )}

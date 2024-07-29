@@ -4,72 +4,70 @@ import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 const styles = StyleSheet.create({
   page: {
     padding: 30,
-    backgroundColor: '#F3F3F3',
+    backgroundColor: '#FAFAFA',
     fontFamily: 'Helvetica',
   },
   section: {
-    display: 'flex',
     flexDirection: 'row',
-    marginBottom: 15,
-    borderBottom: '1px solid #C0C0C0',
+    marginBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#D3D3D3',
     paddingBottom: 10,
   },
   column: {
     flex: 1,
-    flexDirection: 'column',
     paddingRight: 20,
   },
+  beneficio: {
+    fontSize: 10,
+    color: '#004750',
+    fontWeight: 'normal'
+  },
   row: {
-    display: 'flex',
     flexDirection: 'row',
-    marginBottom: 5,
+    marginBottom: 8,
   },
   label: {
     fontWeight: 'bold',
     fontSize: 12,
-    color: '#333333',
+    color: '#444444',
   },
   value: {
     fontSize: 12,
     marginLeft: 5,
-    color: '#555555',
+    color: '#666666',
   },
   header: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    color: '#003366',
+    color: '#004080',
   },
   subHeader: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: '#003366',
+    color: '#004080',
+    borderBottomWidth: 1,
+    borderBottomColor: '#004080',
+    paddingBottom: 5,
   },
   table: {
-    display: 'flex',
-    width: 'auto',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderRightWidth: 0,
-    borderBottomWidth: 0,
+    width: '100%',
     marginBottom: 20,
   },
   tableRow: {
     flexDirection: 'row',
-    backgroundColor: '#E6E6E6',
+    backgroundColor: '#eee9e9',
+    borderBottomWidth: 1,
+    borderBottomColor: '#D3D3D3',
   },
   tableCol: {
     flex: 1,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderLeftWidth: 0,
-    borderTopWidth: 0,
-    padding: 5,
+    padding: 8,
   },
   tableCell: {
-    margin: 5,
     fontSize: 10,
     color: '#333333',
   }
@@ -93,7 +91,8 @@ const PdfDocument = ({ dados }) => {
   
   <Document>
     <Page size="A4" orientation='landscape' style={styles.page}>
-    <Text style={styles.header}>Informações do Cliente</Text>
+      <Text style={styles.beneficio}>Beneficio # {dadosPessoais.numeroBeneficio}</Text>
+      <Text style={styles.header}>Informações Inss</Text>
         <View style={styles.section}>
           <View style={styles.column}>
             <View style={styles.row}>
@@ -212,7 +211,7 @@ const PdfDocument = ({ dados }) => {
         {dados.listaEmprestimo && dados.listaEmprestimo.map((emprestimo, index) => (
           <View style={styles.tableRow} key={index}>
             <View style={styles.tableCol}><Text style={styles.tableCell}>{emprestimo.numeroContrato}</Text></View>
-            <View style={styles.tableCol}><Text style={styles.tableCell}>{emprestimo.nomeBanco}</Text></View>
+            <View style={styles.tableCol}><Text style={styles.tableCell}>{emprestimo.codigoBanco} {emprestimo.nomeBanco}</Text></View>
             <View style={styles.tableCol}><Text style={styles.tableCell}>{emprestimo.dataAverbacao}</Text></View>
             <View style={styles.tableCol}><Text style={styles.tableCell}>{emprestimo.competenciaInicio}</Text></View>
             <View style={styles.tableCol}><Text style={styles.tableCell}>{emprestimo.competenciaFim}</Text></View>

@@ -21,8 +21,8 @@ export default function App() {
   console.log(deco)
   localStorage.setItem("username", deco["username"])
   localStorage.setItem("hierarquiaName", deco['hierarquiaName'])
+  localStorage.setItem("tempologado", deco["exp"])
   
-  console.log(deco)
    if(deco && signinApi !== 'usuario não existe') {
     navigate('/consulta')
    }
